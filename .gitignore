@@ -495,3 +495,7 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Caching anywhere in the project
+/cache/
+.angular/

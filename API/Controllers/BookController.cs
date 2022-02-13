@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using API.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,9 +13,13 @@ namespace API.Controllers
     {
         // GET: api/<BookController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ApiResponse<string[]> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new ApiResponse<string[]>
+            {
+                Response = new string[] { "value1", "value2" },
+                Messages = Array.Empty<string>()
+            };
         }
 
         // GET api/<BookController>/5

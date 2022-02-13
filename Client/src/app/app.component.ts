@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { routes } from './models/route-constants';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'web-client';
+    title = 'web-client';
+
+    demoText: string[] = [];
+
+    constructor(apiService: ApiService) {
+        apiService.get<string[]>(routes.books).then(response => this.demoText = response.response);
+    }
 }
