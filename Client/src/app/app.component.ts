@@ -13,6 +13,6 @@ export class AppComponent {
     demoText: string[] = [];
 
     constructor(apiService: ApiService) {
-        apiService.get<string[]>(routes.books).then(response => this.demoText = response.response);
+        apiService.get<string[]>(routes.books).then(response => this.demoText = response.data);
     }
 }

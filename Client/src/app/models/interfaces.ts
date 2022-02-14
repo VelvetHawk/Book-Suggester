@@ -1,7 +1,7 @@
 import { ResponseMessageCode } from "./enums";
 
 export interface IApiResponse<T> {
-    response: T;
+    data: T;
     messages: string[];
 }
 
