@@ -1,0 +1,17 @@
+<div class="search-results-container">
+    <div *ngFor="let work of searchResults?.works">
+        <div class="work">
+            <div class="thumbnail">
+                <img title="thumbnail" alt="thumbnail" />
+            </div>
+            <div class="details">
+                <h3 class="title">{{work.title}}</h3>
+                <div class="authors">
+                    <div *ngFor="let author of work.authors">
+                        <span class="author">{{author.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

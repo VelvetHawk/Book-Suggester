@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Services;
+using API.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +42,14 @@ namespace API
                     builder.AllowAnyMethod();
                 });
             });
+
+            // Configure mappings
+            AutoMapperConfig.ConfigureMaps();
+
+            // Add bindings
+            services.AddScoped<IBookService, BookService>();
+
+            // For testing, can separate this out for binding to test service implementations with dummy data
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,7 +2,7 @@
 {
     public class ApiResponse<T>
     {
-        public T Response { get; set; }
+        public T Data { get; set; }
 
         public string[] Messages { get; set; }
     }

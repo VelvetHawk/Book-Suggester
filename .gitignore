@@ -499,3 +499,4 @@ $RECYCLE.BIN/
 # Caching anywhere in the project
 /cache/
 .angular/
+dist/
