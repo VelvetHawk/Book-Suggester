@@ -10,6 +10,10 @@ export interface IResponseMessage {
     text: string;
 }
 
+export interface IParamModel {
+    [key: string]: any;
+}
+
 export interface ISubjectViewModel {
     key?: string;
     name?: string;

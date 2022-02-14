@@ -23,11 +23,11 @@ namespace API.Controllers
 
         // GET: api/<BookController>
         [HttpGet]
-        public async Task<ApiResponse<SubjectViewModel>> Get()
+        public async Task<ApiResponse<SubjectViewModel>> Get([FromQuery] int offset = 0, [FromQuery] int limit = 10)
         {
             return new ApiResponse<SubjectViewModel>
             {
-                Data = await _bookService.RetrieveWorksBySubject(""),
+                Data = await _bookService.RetrieveWorksBySubject("", offset, limit),
                 Messages = Array.Empty<string>()
             };
         }

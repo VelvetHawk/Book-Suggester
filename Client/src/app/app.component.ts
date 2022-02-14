@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { routes } from './models/route-constants';
 import { ApiService } from './services/api.service';
+import { GlobalEventsService } from './services/global-events.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent {
 
     demoText: string[] = [];
 
-    constructor(apiService: ApiService) {
+    constructor(apiService: ApiService, protected globalEventsService: GlobalEventsService) {
         apiService.get<string[]>(routes.books).then(response => this.demoText = response.data);
     }
+
+
 }

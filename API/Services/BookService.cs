@@ -14,15 +14,23 @@ namespace API.Services
 
         public async Task<SubjectViewModel> RetrieveWorksBySubject(string subject)
         {
-            var bookCount = 10;
+            return GenerateData(0, 10);
+        }
 
+        public async Task<SubjectViewModel> RetrieveWorksBySubject(string subject, int offset, int limit)
+        {
+            return GenerateData(offset, limit);
+        }
+
+        private static SubjectViewModel GenerateData(int offset, int limit)
+        {
             return new SubjectViewModel
             {
                 Key = "abc",
                 Name = "cooking",
                 SubjectType = "subject",
-                WorkCount = bookCount,
-                Works = Enumerable.Range(1, bookCount).Select(index => new WorkViewModel
+                WorkCount = limit,
+                Works = Enumerable.Range(offset, limit).Select(index => new WorkViewModel
                 {
                     Key = index.ToString(),
                     Title = $"Sample Book {index}",
@@ -41,11 +49,6 @@ namespace API.Services
 
                 }).ToArray()
             };
-        }
-
-        public async Task<SubjectViewModel> RetrieveWorksBySubject(string subject, int offset, int limit)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

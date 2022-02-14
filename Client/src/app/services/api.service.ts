@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import { RequestMethod } from "src/app/models/enums";
-import { IApiResponse } from "../models/interfaces";
+import { IApiResponse, IParamModel } from "src/app/models/interfaces";
 
 @Injectable({ providedIn: "root" })
 export class ApiService {
@@ -16,8 +16,8 @@ export class ApiService {
     protected constructor(private httpClient: HttpClient) {
     }
 
-    get<T>(url: string): Promise<IApiResponse<T>> {
-        return this.request<T>("GET", url, null);
+    get<T>(url: string, params?: IParamModel): Promise<IApiResponse<T>> {
+        return this.request<T>("GET", params != null ? this.formatQueryParameters(url, params) : url, null);
     }
 
     post<T>(url: string, requestBody?: any): Promise<IApiResponse<T>> {
@@ -49,6 +49,9 @@ export class ApiService {
             .catch(reason => this.handleErrors(reason));
     }
 
+    private formatQueryParameters(url: string, queryParams: IParamModel) : string {
+        return `${url}?` + (Object.keys(queryParams).map(key => `${key}=${queryParams[key]}`)).toString().replace(",", "&");
+    }
 
     private handleResponse<T>(response: IApiResponse<T>) {
         // Custom response handling code here

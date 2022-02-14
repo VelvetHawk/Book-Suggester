@@ -19,8 +19,4 @@
     <TypeScriptCompile Include="src\app\services\api.service.ts" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="src\app\components\" />
-  </ItemGroup>
-
 </Project>
