@@ -3,6 +3,8 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using API.Services.Interfaces;
+using API.Models.ViewModels;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,20 +14,20 @@ namespace API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IBookService bookService;
+        private readonly IBookService _bookService;
 
         public BookController(IBookService bookService)
         {
-            this.bookService = bookService;
+            this._bookService = bookService;
         }
 
         // GET: api/<BookController>
         [HttpGet]
-        public ApiResponse<string[]> Get()
+        public async Task<ApiResponse<SubjectViewModel>> Get()
         {
-            return new ApiResponse<string[]>
+            return new ApiResponse<SubjectViewModel>
             {
-                Data = new string[] { "value1", "value2" },
+                Data = await _bookService.RetrieveWorksBySubject(""),
                 Messages = Array.Empty<string>()
             };
         }
