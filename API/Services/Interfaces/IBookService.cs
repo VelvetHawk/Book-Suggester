@@ -5,8 +5,10 @@ namespace API.Services.Interfaces
 {
     public interface IBookService
     {
+        Task<WorkViewModel> RetrieveWorkById(string workId);
+
         Task<SubjectViewModel> RetrieveWorksBySubject(string subject);
 
-        Task<WorkViewModel> RetrieveWorkById(string workId);
+        Task<SubjectViewModel> RetrieveWorksBySubject(string subject, int offset, int limit);
     }
 }

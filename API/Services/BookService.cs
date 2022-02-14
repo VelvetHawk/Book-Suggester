@@ -15,5 +15,10 @@ namespace API.Services
         {
             throw new System.NotImplementedException();
         }
+
+        public Task<SubjectViewModel> RetrieveWorksBySubject(string subject, int offset, int limit)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
